@@ -12,7 +12,7 @@ public class helloworldController {
     public String helloWorld() {
         return "Hello World!";
     }
-    @GetMapping("/h")
+    @GetMapping("/")
     public String helloHtml(Model model) {
         model.addAttribute("message", "Hello World!");
         return "<b>In the end, it's not the years in your life that count. "+

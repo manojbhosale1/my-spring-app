@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.Library</groupId>
-    <artifactId>spring_demo</artifactId>
+    <artifactId>my-spring-app</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring_demo</name>
-    <description>spring_demo</description>
+    <name>my-spring-app</name>
+    <description>my-spring-app</description>
     <properties>
         <java.version>17</java.version>
     </properties>
@@ -25,7 +25,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-thymeleaf</artifactId>
         </dependency>
-
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
@@ -35,7 +34,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <scope>test</scope>
+            <scope>test</artifactId>
         </dependency>
     </dependencies>
 
@@ -45,7 +44,15 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.10.1</version> <!-- Ensure this version or later -->
+                <configuration>
+                    <source>17</source>
+                    <target>17</target>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
-
 </project>

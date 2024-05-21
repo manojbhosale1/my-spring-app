@@ -1,14 +1,14 @@
-# Use the official OpenJDK 17 base image
-FROM openjdk:17-jdk-alpine
+# Use official OpenJDK 17 image as base
+FROM openjdk:17-jdk-slim
 
 # Refer to Maven build -> finalName
-ARG JAR_FILE=target/spring-boot-web.jar
+ARG JAR_FILE=target/spring_demo-0.0.1-SNAPSHOT.jar
 
-# Set the working directory inside the container
-WORKDIR /opt/app
+# Set the working directory in the container
+WORKDIR /app
 
-# Copy the jar file into the working directory
-COPY ${JAR_FILE} spring-boot-web.jar
+# Copy the packaged JAR file into the container
+COPY ${JAR_FILE} spring_demo-0.0.1-SNAPSHOT.jar
 
-# Command to run the Spring Boot application
-ENTRYPOINT ["java","-jar","spring-boot-web.jar"]
+# Specify the command to run your Spring Boot application
+ENTRYPOINT ["java", "-jar", "spring_demo-0.0.1-SNAPSHOT.jar"]

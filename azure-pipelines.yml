@@ -33,9 +33,15 @@ stages:
       inputs:
         SonarQube: 'My_sonarQube'
         scannerMode: 'Other'
+        extraProperties: |
+          # Additional properties that will be passed to the scanner, 
+          # Put one key=value per line, example:
+          # sonar.exclusions=**/*.bin
+          sonar.projectKey=AzureSonarDemo
+          sonar.projectName=AzureSonarDemo
     - task: JavaToolInstaller@0
       inputs:
-        versionSpec: '8'
+        versionSpec: '17'
         jdkArchitectureOption: 'x64'
         jdkSourceOption: 'PreInstalled'
     - task: Maven@4
@@ -50,7 +56,11 @@ stages:
         mavenVersionOption: 'Default'
         mavenAuthenticateFeed: false
         effectivePomSkip: false
-        sonarQubeRunAnalysis: false
+        sonarQubeRunAnalysis: true
+        sqMavenPluginVersionChoice: 'latest'
+    - task: SonarQubePublish@5
+      inputs:
+        pollingTimeoutSec: '300'
     - task: Docker@2
       displayName: Build and push an image to container registry
       inputs:
